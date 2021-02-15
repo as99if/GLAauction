@@ -6,16 +6,20 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
+//import java.time.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author asifshuvo
  */
 @Entity
+@Table
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,6 +27,15 @@ public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
+    private String description;
+    private Double starting_price;
+    private List<String> category;
+    private List<String> subcategory;
+    //private LocalDate duration_of_action; 
+    private List<Double> bids;
+    
+    
     public Long getId() {
         return id;
     }
@@ -31,6 +44,62 @@ public class Item implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getStarting_price() {
+        return starting_price;
+    }
+
+    public void setStarting_price(double starting_price) {
+        this.starting_price = starting_price;
+    }
+
+    public List<String> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<String> category) {
+        this.category = category;
+    }
+
+    public List<String> getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(List<String> subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    /*public LocalDate getDuration_of_action() {
+        return duration_of_action;
+    }
+
+    public void setDuration_of_action(LocalDate duration_of_action) {
+        this.duration_of_action = duration_of_action;
+    }*/
+    
+    public List<Double> getBids() {
+        return bids;
+    }
+
+    public void setBids(List<Double> bids) {
+        this.bids = bids;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

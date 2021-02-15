@@ -5,7 +5,6 @@
  */
 package Entity;
 
-import java.sql.Timestamp;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,17 +18,31 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Bid implements Serializable {
+public class category implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
     
-    private Double bidAmount;
+    private String categoryName;
     private Long itemId;
-    private Long userId;
-    private Timestamp bidTime;
 
     public Long getId() {
         return id;
@@ -49,10 +62,10 @@ public class Bid implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bid)) {
+        if (!(object instanceof category)) {
             return false;
         }
-        Bid other = (Bid) object;
+        category other = (category) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -61,7 +74,7 @@ public class Bid implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Bid[ id=" + id + " ]";
+        return "Entity.category[ id=" + id + " ]";
     }
     
 }
