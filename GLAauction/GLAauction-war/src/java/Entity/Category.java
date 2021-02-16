@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,19 +19,32 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class subcategory implements Serializable {
+public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
+    
+    @Column
+    private String categoryName;
+    @Column
+    private Long itemId;
 
-    public String getSubcategoryName() {
-        return subcategoryName;
+    public Long getId() {
+        return id;
     }
 
-    public void setSubcategoryName(String subcategoryName) {
-        this.subcategoryName = subcategoryName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Long getItemId() {
@@ -41,17 +55,7 @@ public class subcategory implements Serializable {
         this.itemId = itemId;
     }
     
-    private String subcategoryName;
-    private Long itemId;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -63,10 +67,10 @@ public class subcategory implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof subcategory)) {
+        if (!(object instanceof Category)) {
             return false;
         }
-        subcategory other = (subcategory) object;
+        Category other = (Category) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -75,7 +79,7 @@ public class subcategory implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.subcategory[ id=" + id + " ]";
+        return "Entity.category[ id=" + id + " ]";
     }
     
 }

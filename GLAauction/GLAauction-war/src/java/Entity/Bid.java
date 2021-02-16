@@ -6,32 +6,31 @@
 package Entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author asifshuvo
  */
 @Entity
-@Table
-public class category implements Serializable {
+public class Bid implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
+    
+    @Column
+    private Long itemId;
+    @Column
+    private Double bidAmount;
+    @Column
+    private String bidder;
 
     public Long getItemId() {
         return itemId;
@@ -40,9 +39,22 @@ public class category implements Serializable {
     public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
-    
-    private String categoryName;
-    private Long itemId;
+
+    public Double getBidAmount() {
+        return bidAmount;
+    }
+
+    public void setBidAmount(Double bidAmount) {
+        this.bidAmount = bidAmount;
+    }
+
+    public String getBidder() {
+        return bidder;
+    }
+
+    public void setBidder(String bidder) {
+        this.bidder = bidder;
+    }
 
     public Long getId() {
         return id;
@@ -62,10 +74,10 @@ public class category implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof category)) {
+        if (!(object instanceof Bid)) {
             return false;
         }
-        category other = (category) object;
+        Bid other = (Bid) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -74,7 +86,7 @@ public class category implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.category[ id=" + id + " ]";
+        return "Entity.Bid[ id=" + id + " ]";
     }
     
 }
