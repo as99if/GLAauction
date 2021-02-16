@@ -27,7 +27,7 @@ import javax.persistence.Table;
 @NamedQueries(@NamedQuery(name = "Item.getAll", query = " SELECT e FROM Item e"))   // NamedQuery, set up a query under a 'name'
 public class Item implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+
     @Id
     @Column 
     private Integer id;
