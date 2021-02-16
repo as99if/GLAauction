@@ -1,6 +1,6 @@
-Create Db:
-	- auction
-	- id, pass : gla 
+Create Db
+	auction
+	id, pass : gla 
 
 Create connection pool
 	Pool Name: auctionPool
