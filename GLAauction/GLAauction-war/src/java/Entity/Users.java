@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,33 +19,47 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class subcategory implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
-
-    public String getSubcategoryName() {
-        return subcategoryName;
+   
+    @Column
+    private String userID;
+    @Column
+    private String pass;
+    @Column
+    private String name;
+    
+    public String getUserID() {
+        return userID;
     }
 
-    public void setSubcategoryName(String subcategoryName) {
-        this.subcategoryName = subcategoryName;
-    }
-
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
     
-    private String subcategoryName;
-    private Long itemId;
 
+    public String getPass() {
+        return pass;
+    }
 
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -63,10 +78,10 @@ public class subcategory implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof subcategory)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        subcategory other = (subcategory) object;
+        User other = (User) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -75,7 +90,7 @@ public class subcategory implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.subcategory[ id=" + id + " ]";
+        return "Entity.User[ id=" + id + " ]";
     }
     
 }

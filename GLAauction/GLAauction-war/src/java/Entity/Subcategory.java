@@ -19,47 +19,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class User implements Serializable {
+public class Subcategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-   
     @Column
-    private String userID;
+    private String subcategoryName;
     @Column
-    private String pass;
-    @Column
-    private String name;
-    
-    public String getUserID() {
-        return userID;
-    }
+    private Long itemId;
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-    
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    
     public Long getId() {
         return id;
     }
@@ -68,6 +40,23 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    public String getSubcategoryName() {
+        return subcategoryName;
+    }
+
+    public void setSubcategoryName(String subcategoryName) {
+        this.subcategoryName = subcategoryName;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -78,10 +67,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Subcategory)) {
             return false;
         }
-        User other = (User) object;
+        Subcategory other = (Subcategory) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -90,7 +79,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.User[ id=" + id + " ]";
+        return "Entity.subcategory[ id=" + id + " ]";
     }
     
 }

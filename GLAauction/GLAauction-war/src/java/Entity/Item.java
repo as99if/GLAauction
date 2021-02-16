@@ -6,12 +6,16 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 //import java.time.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -19,28 +23,40 @@ import javax.persistence.Table;
  * @author asifshuvo
  */
 @Entity
-@Table
+@Table                              // as a table in db
+@NamedQueries(@NamedQuery(name = "Item.getAll", query = " SELECT e FROM Item e"))   // NamedQuery, set up a query under a 'name'
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @Column 
+    private Integer id;
+    
+    @Column                         // as a column in db
     private String name;
+    @Column
     private String description;
-    private Double starting_price;
-    private List<String> category;
-    private List<String> subcategory;
-    //private LocalDate duration_of_action; 
-    private List<Double> bids;
+    @Column
+    private Double startingPrice;
+    @Column
+    private String endDate; 
+
+    public Item() {
+    }
     
-    
-    public Long getId() {
+    public Item(Integer id, String name, String description, Double startingPrice, String endDate) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.startingPrice = startingPrice;
+        this.endDate = endDate;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,45 +76,25 @@ public class Item implements Serializable {
         this.description = description;
     }
 
-    public double getStarting_price() {
-        return starting_price;
+    public double getStartingPrice() {
+        return startingPrice;
     }
 
-    public void setStarting_price(double starting_price) {
-        this.starting_price = starting_price;
+    public void setStartingPrice(double startingPrice) {
+        this.startingPrice = startingPrice;
     }
 
-    public List<String> getCategory() {
-        return category;
+
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setCategory(List<String> category) {
-        this.category = category;
+    public void setEndDate(String duration_of_action) {
+        this.endDate = duration_of_action;
     }
-
-    public List<String> getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(List<String> subcategory) {
-        this.subcategory = subcategory;
-    }
-
-    /*public LocalDate getDuration_of_action() {
-        return duration_of_action;
-    }
-
-    public void setDuration_of_action(LocalDate duration_of_action) {
-        this.duration_of_action = duration_of_action;
-    }*/
     
-    public List<Double> getBids() {
-        return bids;
-    }
-
-    public void setBids(List<Double> bids) {
-        this.bids = bids;
-    }
+    
+   
     
     @Override
     public int hashCode() {
