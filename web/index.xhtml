@@ -1,0 +1,65 @@
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Registration page</title>
+    </h:head>
+    <h:body>
+        Create Auction: 
+       
+        <h:form>
+                Name:
+                <h:inputText value="#{createAuction2.name}"
+                             id="name">
+                </h:inputText>
+               
+                <br/>
+                
+                Description:
+                <br/>
+                <h:inputTextarea value="#{createAuction2.description}"
+                             id="desc">
+                </h:inputTextarea>
+                <br/>
+                
+                Start Price:
+                <h:inputText value="#{createAuction2.startPrice}"
+                             id="startPrice">
+                </h:inputText>
+                <br/>
+                
+                Bid duration: 
+                 <h:inputText value="#{createAuction2.duration}"
+                             id="duration">
+                </h:inputText>
+                <br/>
+                
+                Username:
+                 <h:inputText value="#{createAuction2.username}"
+                             id="username">
+                </h:inputText>
+                <br/>
+                
+                Categories:
+                <h:selectManyCheckbox value="#{createAuction2.category}">
+                    <c:forEach var="row" items="#{createAuction2.getCategories()}">
+                        <f:selectItem itemValue="#{row.id}" itemLabel="#{row.name}"></f:selectItem>
+                    </c:forEach>
+                </h:selectManyCheckbox>
+                <br/>
+                 <h:commandButton value="create auction" 
+                                 action="#{createAuction2.createAuction}"/>
+                                 <br/>
+                 <h:commandButton value="send fake" 
+                                  action="#{createAuction2.sendFakeRequest}"/>
+
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
